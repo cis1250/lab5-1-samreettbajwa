@@ -3,6 +3,35 @@
 # Word frequency exercise
 # TODO: (Read detailed instructions in the Readme file)
 
+def calculate_frequencies(sentence):
+    words_in_sentence = sentence[:-1].split()
+    
+    words = []
+    frequencies = []
+
+    for word in words_in_sentence:
+        word = word.lower()
+        if word in words:
+            index = words.index(word)
+            frequencies[index] += 1
+        else:
+            words.append(word)
+            frequencies.append(1)
+    
+    return words, frequencies
+    
+def print_frequencies(words, frequencies):
+    print("\nWord Frequencies:")
+    for word, freq in zip(words, frequencies):
+        print(f"{word}: {freq}")
+        
+def main():
+    words, frequencies = calculate_frequencies(sentence)
+    print_frequencies(words, frequencies)
+
+if __name__ == "__main__":
+    main()
+
 import re
 
 #This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
