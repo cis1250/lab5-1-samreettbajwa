@@ -3,6 +3,24 @@
 # Word frequency exercise
 # TODO: (Read detailed instructions in the Readme file)
 
+def get_sentence():
+    while True:
+        sentence = input("Enter a valid sentence: ").strip()
+        if valid_sentence(sentence):
+            return sentence
+        else:
+            print("Invalid. Enter a different sentence: ")
+            
+def valid_sentence(sentence):
+    if len(sentence) == 0:
+        return False
+    if not sentence[0].isupper():
+        return False
+    if sentence[-1] not in [".", "?", "!"]:
+        return False
+    words = sentence[:-1].split()
+    return len(words) > 0
+
 def calculate_frequencies(sentence):
     words_in_sentence = sentence[:-1].split()
     
@@ -26,6 +44,7 @@ def print_frequencies(words, frequencies):
         print(f"{word}: {freq}")
         
 def main():
+    sentence = get_sentence()
     words, frequencies = calculate_frequencies(sentence)
     print_frequencies(words, frequencies)
 
